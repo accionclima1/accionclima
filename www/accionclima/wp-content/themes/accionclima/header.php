@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package _tk
+ * @package ac_tk
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -17,6 +17,8 @@
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,400italic,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 	<?php wp_head(); ?>
 </head>
@@ -24,72 +26,84 @@
 <body <?php body_class(); ?>>
 	<?php do_action( 'before' ); ?>
 
-<header id="masthead" class="site-header" role="banner">
-<?php // substitute the class "container-fluid" below if you want a wider content area ?>
-	<div class="container">
-		<div class="row">
-			<div class="site-header-inner col-sm-12">
+<!-- AC navigation -->
 
-				<?php $header_image = get_header_image();
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <?php $header_image = get_header_image();
 				if ( ! empty( $header_image ) ) { ?>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
+					<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<img src="<?php header_image(); ?>"  alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
 					</a>
-				<?php } // end if ( ! empty( $header_image ) ) ?>
+		<?php } // end if ( ! empty( $header_image ) ) ?>
+    </div>
+
+    <!-- Stepped Menus -->
+    <div class="steped-nav">
+		
+		<!-- Main site menu -->
+		<?php wp_nav_menu(
+			array(
+				'theme_location' 	=> 'primary',
+				'depth'             => 2,
+				'container'         => 'div',
+				'container_class'   => 'main-nav',
+				'menu_class' 		=> 'nav navbar-nav',
+				'fallback_cb' 		=> 'wp_bootstrap_navwalker::fallback',
+				'menu_id'			=> 'main-menu',
+				'walker' 			=> new wp_bootstrap_navwalker()
+			)
+		); ?>
+		<!-- Secundary menu -->
+		<?php wp_nav_menu(
+			array(
+				'theme_location' 	=> 'secondary',
+				'depth'             => 2,
+				'container'         => 'div',
+				'container_class'   => 'secundary-nav',
+				'menu_class' 		=> 'nav navbar-nav',
+				'fallback_cb' 		=> 'wp_bootstrap_navwalker::fallback',
+				'menu_id'			=> 'secundary-menu',
+				'walker' 			=> new wp_bootstrap_navwalker()
+			)
+		); ?>
+    </div><!-- /.navbar-collapse -->
+
+	<form class="navbar-form" role="search">
+        <div class="form-group">
+          <input type="search" class="search-field form-control" class="form-control" placeholder="Buscar">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+	<div class="user-menu navbar-right">
+	   <?php if ( is_user_logged_in() ) { ?>
+
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>wp-admin/profile.php">Perfil</a> | 
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>wp-login.php?action=logout">Cerrar Sesion</a>
+			
+		<?php } else { ?>
+			
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>wp-login.php">Iniciar sesion</a>
+				| 
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>wp-signup.php">Registrarse</a>
+			
+		<?php } ?>
+	</div>
+	<button type="button" class="navbar-toggle">
+		<span class="sr-only"><?php _e('Toggle navigation','ac_tk') ?> </span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</button>
+
+  </div><!-- /.container-fluid -->
+</nav>
 
 
-				<div class="site-branding">
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<p class="lead"><?php bloginfo( 'description' ); ?></p>
-				</div>
 
-			</div>
-		</div>
-	</div><!-- .container -->
-</header><!-- #masthead -->
 
-<nav class="site-navigation">
-<?php // substitute the class "container-fluid" below if you want a wider content area ?>
-	<div class="container">
-		<div class="row">
-			<div class="site-navigation-inner col-sm-12">
-				<div class="navbar navbar-default">
-					<div class="navbar-header">
-						<!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="sr-only"><?php _e('Toggle navigation','_tk') ?> </span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-	
-						<!-- Your site title as branding in the menu -->
-						<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-					</div>
-
-					<!-- The WordPress Menu goes here -->
-					<?php wp_nav_menu(
-						array(
-							'theme_location' 	=> 'primary',
-							'depth'             => 2,
-							'container'         => 'div',
-							'container_class'   => 'collapse navbar-collapse',
-							'menu_class' 		=> 'nav navbar-nav',
-							'fallback_cb' 		=> 'wp_bootstrap_navwalker::fallback',
-							'menu_id'			=> 'main-menu',
-							'walker' 			=> new wp_bootstrap_navwalker()
-						)
-					); ?>
-
-				</div><!-- .navbar -->
-			</div>
-		</div>
-	</div><!-- .container -->
-</nav><!-- .site-navigation -->
 
 <div class="main-content">
-<?php // substitute the class "container-fluid" below if you want a wider content area ?>
-	<div class="container">
-		<div class="row">
-			<div id="content" class="main-content-inner col-sm-12 col-md-8">
 

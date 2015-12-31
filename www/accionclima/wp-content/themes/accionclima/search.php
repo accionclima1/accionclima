@@ -2,15 +2,29 @@
 /**
  * The template for displaying Search Results pages.
  *
- * @package _tk
+ * @package ac_tk
  */
 
 get_header(); ?>
 
 	<?php if ( have_posts() ) : ?>
 
-		<header>
-			<h2 class="page-title"><?php printf( __( 'Search Results for: %s', '_tk' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+		<header class="search-header">
+
+			<h2 class="page-title"><?php printf( __( 'Resultados de busqueda', 'ac_tk' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
+
+			<div class="search-query">
+				<span>cafe</span>
+				<span>cafe</span>
+				<span>cafe</span>
+				<span>cafe</span>
+			</div>
+
+			<div class="filter">
+				<a href="/"><i class="fa fa-times-circle"></i></a>
+				<p>Limpiar filtro de búsqueda</p>
+			</div>
+
 		</header><!-- .page-header -->
 
 		<?php // start the loop. ?>
@@ -20,7 +34,7 @@ get_header(); ?>
 
 		<?php endwhile; ?>
 
-		<?php _tk_content_nav( 'nav-below' ); ?>
+		<?php ac_tk_content_nav( 'nav-below' ); ?>
 
 	<?php else : ?>
 
