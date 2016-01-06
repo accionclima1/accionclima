@@ -63,14 +63,14 @@ get_header(); ?>
 				<div class="col-md-6">
 					<article id="post-70" class="clima type-clima hentry biggy">
 								<div class="featured-image">
-									<img width="300" height="200" src="http://local.accionclima.org/wp-content/uploads/2015/12/coffe-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="Fresh coffee beans on branch of coffee plant - Arabica coffee" srcset="http://local.accionclima.org/wp-content/uploads/2015/12/coffe-300x200.jpg 300w, http://local.accionclima.org/wp-content/uploads/2015/12/coffe-768x512.jpg 768w, http://local.accionclima.org/wp-content/uploads/2015/12/coffe-1024x683.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px">
+									<img width="300" height="200" src="/wp-content/uploads/2015/12/coffe-300x200.jpg" class="attachment-medium size-medium wp-post-image" alt="Fresh coffee beans on branch of coffee plant - Arabica coffee" srcset="/wp-content/uploads/2015/12/coffe-300x200.jpg 300w, /wp-content/uploads/2015/12/coffe-768x512.jpg 768w, /wp-content/uploads/2015/12/coffe-1024x683.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px">
 									<footer class="entry-meta">
 											<span class="tags-links">
-												Tags: <a href="http://local.accionclima.org/blog/tag/panama/" rel="tag">panama</a>, <a href="http://local.accionclima.org/blog/tag/costa-rica/" rel="tag">costa rica</a>, <a href="http://local.accionclima.org/blog/tag/cafe/" rel="tag">cafe</a>											</span>										
+												Tags: <a href="#" rel="tag">panama</a>, <a href="#" rel="tag">costa rica</a>, <a href="#" rel="tag">cafe</a>											</span>										
 									</footer><!-- .entry-meta -->			
 								</div>
 								<header>
-									<h2 class="page-title"><a href="http://local.accionclima.org/blog/clima/mundo-hola/" rel="bookmark"><i class="fa fa-caret-right"></i> Mundo Hola</a></h2>
+									<h2 class="page-title"><a href="#" rel="bookmark"><i class="fa fa-caret-right"></i> Mundo Hola</a></h2>
 									</header><!-- .entry-header -->
 									<div class="entry-summary">
 										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis tempor nunc non malesuada. Nam sollicitudin tellus purus, nec egestas ante ultrices id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mattis tempor nunc non malesuada.

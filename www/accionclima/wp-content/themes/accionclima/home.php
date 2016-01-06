@@ -18,7 +18,9 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
 						<img src="/wp-content/uploads/2015/12/logo-white.png" alt="">
-						<form role="search" method="get" class="search-form" action="http://local.accionclima.org/">
+						<?php $url = site_url(); ?>
+
+						<form role="search" method="get" class="search-form" action="<?php echo $url; ?>">
 							<label>
 								<input type="search" class="search-field form-control" placeholder="Realizar búsqueda" value="" name="s" title="Search for:">
 								<input type="hidden" name="post_type" value="clima" />
@@ -78,6 +80,8 @@ get_header(); ?>
 			    		<div class="container">
 			    			<div class="row">
 			    				<div class="col-lg-12">
+									
+
 			    					<?php the_field('tab_content_1'); ?>
 			    				</div>
 			    			</div>

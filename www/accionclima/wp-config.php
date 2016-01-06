@@ -30,13 +30,14 @@ define('LOGGED_IN_SALT',   'g)7k O1gbl{+S}kXA}s7]I?d$_>NnS:ShWfw@^Iv8keK]~V+FvqZ
 define('NONCE_SALT',       '5Nl7r?+roa_7{-[c,<KTv:gSTqV4$lXc-eBcu!y|;m w3/TU)W#k+Y^*!7+wMn=-');
 
 
-$table_prefix = 'accionclima_';
+$table_prefix = 'ac_';
 
 
 define( 'WP_DEBUG', true );
 
 /* Multisite */
 define( 'WP_ALLOW_MULTISITE', true );
+
 define('MULTISITE', true);
 define('SUBDOMAIN_INSTALL', false);
 define('DOMAIN_CURRENT_SITE', 'local.accionclima.org');

@@ -13,13 +13,6 @@
 get_header(); ?>
 <!-- hero module -->
 <?php while ( have_posts() ) : the_post(); ?>	
-	<style>
-		li.active a .icon-wrap, li:hover a .icon-wrap {
-		    border-color: <?php the_field('color_primario'); ?>;
-		    background-color: <?php the_field('color_primario'); ?>;
-		}
-
-	</style>
 
 	<div class="home-hero secondary">
 		<div class="content-layer">
@@ -27,8 +20,10 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
 						<img src="/wp-content/uploads/2015/12/logo-white.png" alt="">
-						<h2><?php the_title(); ?></h2>
-						<form role="search" method="get" class="search-form" action="http://local.accionclima.org/">
+						<h2><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></h2>
+						<?php $url = site_url(); ?>
+
+						<form role="search" method="get" class="search-form" action="<?php echo $url; ?>">
 							<label>
 								<input type="search" class="search-field form-control" placeholder="Realizar búsqueda" value="" name="s" title="Search for:">
 								<input type="hidden" name="post_type" value="clima" />
@@ -54,8 +49,8 @@ get_header(); ?>
 				</div>
 			</div>
 		</div>
-		<?php $imageBg = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-			<div class="background-layer" style="background-image:url('<?php echo $imageBg[0]; ?>')">
+		
+			<div class="background-layer">
 		</div>
 	</div>
 

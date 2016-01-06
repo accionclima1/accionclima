@@ -26,7 +26,7 @@
 			<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
 			<div class="col-md-3 col-sm-6 proyect-item" style="background-image: url('<?php echo $image[0]; ?>')">
 				<h6><?php the_title();?> </h6>
-				<?php the_excerpt(); ?>
+				<p class="project-link"><i class="fa fa-caret-right"></i><a href="<?php the_permalink()?>">Ver Proyecto completo</a></p>
 			</div>
 			<?php endwhile; wp_reset_postdata(); ?>
 		</div>

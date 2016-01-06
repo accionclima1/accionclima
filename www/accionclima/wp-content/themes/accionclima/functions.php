@@ -72,6 +72,39 @@ function ac_tk_setup() {
 	?>
 	<style type="text/css" id="custom-background-css">
 		body.custom-background .background-layer{ <?php echo trim( $style ); ?> }
+		li.active a .icon-wrap,
+		li:hover a .icon-wrap {
+			border-color: #<?php echo trim( $color ); ?>;
+			background-color: #<?php echo trim( $color ); ?>;
+		}
+		.tabbed-cont h6:after {
+			border-left-color: #<?php echo trim( $color ); ?>;
+		}
+		.tabbed-cont svg path {
+		    fill: #<?php echo trim( $color ); ?>;
+		}
+		a {
+			color: #<?php echo trim( $color ); ?>;
+		}
+		.btn-primary {
+			background-color: #<?php echo trim( $color ); ?>;
+    		border-color: #<?php echo trim( $color ); ?>;
+		}
+		.default-post-listing h3 {
+			border-top-color: #<?php echo trim( $color ); ?>;
+		}
+		.default-post-listing h3 i {
+			color: #<?php echo trim( $color ); ?>;
+		}
+		.search-header {
+			background: #<?php echo trim( $color ); ?>;
+		}
+		.the-map, .bordered {
+			border-bottom-color: #<?php echo trim( $color ); ?>;
+		}
+		.copyright {
+			background-color: #<?php echo trim( $color ); ?>;
+		}
 	</style>
 	<?php
         };
@@ -214,3 +247,504 @@ require get_template_directory() . '/includes/jetpack.php';
  * Load custom WordPress nav walker.
  */
 require get_template_directory() . '/includes/bootstrap-wp-navwalker.php';
+
+/** Custom Post Types **/
+
+add_action( 'init', 'cptui_register_my_cpts' );
+function cptui_register_my_cpts() {
+	$labels = array(
+		"name" => "projects",
+		"singular_name" => "project",
+		"menu_name" => "Proyectos",
+		"all_items" => "Todos los proyectos",
+		);
+
+	$args = array(
+		"labels" => $labels,
+		"description" => "Post type proyectos",
+		"public" => true,
+		"show_ui" => true,
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "project", "with_front" => true ),
+		"query_var" => true,
+				
+		"supports" => array( "title", "editor", "excerpt", "trackbacks", "custom-fields", "comments", "revisions", "thumbnail", "author", "page-attributes", "post-formats" ),		
+	);
+	register_post_type( "project", $args );
+
+	$labels = array(
+		"name" => "Climas",
+		"singular_name" => "Clima",
+		"menu_name" => "Climas",
+		"all_items" => "Todos los climas",
+		);
+
+	$args = array(
+		"labels" => $labels,
+		"description" => "Post Climas",
+		"public" => true,
+		"show_ui" => true,
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "clima", "with_front" => false ),
+		"query_var" => true,
+				
+		"supports" => array( "title", "editor", "excerpt", "trackbacks", "custom-fields", "comments", "revisions", "thumbnail", "author", "page-attributes", "post-formats" ),		
+		"taxonomies" => array( "post_tag" )
+	);
+	register_post_type( "clima", $args );
+
+	$labels = array(
+		"name" => "Logos footer",
+		"singular_name" => "Logo footer",
+		"menu_name" => "Logos footer",
+		"all_items" => "Todos los logos",
+		);
+
+	$args = array(
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"show_ui" => true,
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "footerslider", "with_front" => true ),
+		"query_var" => true,
+				
+		"supports" => array( "title", "thumbnail" ),		
+	);
+	register_post_type( "footerslider", $args );
+
+// End of cptui_register_my_cpts()
+}
+/** Advanced Custom Fields **/
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_clima-fields',
+		'title' => 'Clima Fields',
+		'fields' => array (
+			array (
+				'key' => 'field_568d62222eda4',
+				'label' => 'tab button 1',
+				'name' => 'tab_button_1',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d62952eda6',
+				'label' => 'tab button 2',
+				'name' => 'tab_button_2',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d629b2eda7',
+				'label' => 'tab button 3',
+				'name' => 'tab_button_3',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d62a12eda8',
+				'label' => 'tab button 4',
+				'name' => 'tab_button_4',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d62a82eda9',
+				'label' => 'Mapa',
+				'name' => 'map_field',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d6e04ef87b',
+				'label' => 'Visualizar',
+				'name' => 'visualizar',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'http://',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_568d6e8fef87c',
+				'label' => 'Meta Data',
+				'name' => 'meta_data',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'http://',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_568d6c2eef87a',
+				'label' => 'Descargar SHP',
+				'name' => 'descargar_shp',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'http://',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_568d62d42edaa',
+				'label' => 'Info Productor',
+				'name' => 'info_productor',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d62e92edab',
+				'label' => 'Youtube Video ID',
+				'name' => 'cvideo',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'clima',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_pagina-principal',
+		'title' => 'Pagina Principal',
+		'fields' => array (
+			array (
+				'key' => 'field_568d502131265',
+				'label' => 'tab button 1',
+				'name' => 'tab_button_1',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d506531269',
+				'label' => 'tab menu 1',
+				'name' => 'tab_menu_1',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50b63126d',
+				'label' => 'tab content 1',
+				'name' => 'tab_content_1',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d503c31266',
+				'label' => 'tab button 2',
+				'name' => 'tab_button_2',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50863126a',
+				'label' => 'tab menu 2',
+				'name' => 'tab_menu_2',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50cf3126e',
+				'label' => 'tab content 2',
+				'name' => 'tab_content_2',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d504631267',
+				'label' => 'tab button 3',
+				'name' => 'tab_button_3',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50923126b',
+				'label' => 'tab menu 3',
+				'name' => 'tab_menu_3',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50d53126f',
+				'label' => 'tab content 3',
+				'name' => 'tab_content_3',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d504d31268',
+				'label' => 'tab button 4',
+				'name' => 'tab_button_4',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50993126c',
+				'label' => 'tab menu 4',
+				'name' => 'tab_menu_4',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d50e131270',
+				'label' => 'tab content 4',
+				'name' => 'tab_content_4',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'home.php',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_paises-disponibles',
+		'title' => 'Paises Disponibles',
+		'fields' => array (
+			array (
+				'key' => 'field_568d7662425d4',
+				'label' => 'Paises',
+				'name' => 'paises',
+				'type' => 'checkbox',
+				'choices' => array (
+					'belice' => 'Belice',
+					'costarica' => 'Costa Rica',
+					'elsalvador' => 'El Salvador',
+					'guatemala' => 'Guatemala',
+					'honduras' => 'Honduras',
+					'nicaragua' => 'Nicaragua',
+					'panama' => 'Panama',
+				),
+				'default_value' => '',
+				'layout' => 'vertical',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'clima',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_portal-home',
+		'title' => 'Portal Home',
+		'fields' => array (
+			array (
+				'key' => 'field_568d8ace77401',
+				'label' => 'tab button 1',
+				'name' => 'tab_button_1',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d8b2177402',
+				'label' => 'tab button 2',
+				'name' => 'tab_button_2',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d8b3c77403',
+				'label' => 'tab button 3',
+				'name' => 'tab_button_3',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_568d8b4077404',
+				'label' => 'tab button 4',
+				'name' => 'tab_button_4',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'home-secondary.php',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_video-posts',
+		'title' => 'Video Posts',
+		'fields' => array (
+			array (
+				'key' => 'field_568d8b7b788b6',
+				'label' => 'Youtube Video ID',
+				'name' => 'video_id',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_568d8bac788b7',
+				'label' => 'Video Description',
+				'name' => 'video_desc',
+				'type' => 'textarea',
+				'default_value' => '',
+				'placeholder' => '',
+				'maxlength' => '',
+				'rows' => '',
+				'formatting' => 'br',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+				array (
+					'param' => 'post_format',
+					'operator' => '==',
+					'value' => 'video',
+					'order_no' => 1,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+}

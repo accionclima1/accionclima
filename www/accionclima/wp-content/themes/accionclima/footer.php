@@ -22,7 +22,7 @@
 					<h2 class="widget-title">Desea recibir info valiosa?</h2>
 					<p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
 					<?php 
-					$formShorcode = '[contact-form-7 id="34" title="registrar correo"]';
+					$formShorcode = '[contact-form-7 id="47" title="registrar correo"]';
 					echo do_shortcode($formShorcode); ?>
 				</div>
 				<div class="widget">

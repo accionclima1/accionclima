@@ -17,7 +17,9 @@ get_header(); ?>
 						<div class="col-md-6 col-md-offset-3">
 							<img src="/wp-content/uploads/2015/12/logo-white.png" alt="">
 							<h2><?php the_title(); ?></h2>
-							<form role="search" method="get" class="search-form" action="http://local.accionclima.org/">
+							<?php $url = site_url(); ?>
+
+						<form role="search" method="get" class="search-form" action="<?php echo $url; ?>">
 								<label>
 									<input type="search" class="search-field form-control" placeholder="Realizar búsqueda" value="" name="s" title="Search for:">
 									<input type="hidden" name="post_type" value="clima" />
@@ -64,7 +66,50 @@ get_header(); ?>
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<div class="the-map">
-						<?php the_field('map_field'); ?>						
+						<?php the_field('map_field'); ?>	
+
+						<div class="row">
+								<div class="col-md-7 map-links">
+									<?php $download = get_field('descargar_shp'); 
+
+										if( !empty($download) ) :	
+									?>
+									<a href="<?php echo $download; ?>"><i class="fa fa-download"></i> Descargar SHP</a> | 
+									<?php endif; 
+										$visualize = get_field('visualizar');
+
+										if( !empty($visualize) ) :
+									?>
+									<a href="<?php echo $visualize; ?>"><i class="fa fa-expand"></i> Visualizar</a> | 
+									<?php endif; 
+										$metaData = get_field('meta_data');
+
+										if( !empty($metaData) ) :
+									?>
+									<a href="<?php echo $metaData; ?>"><i class="fa fa-database"></i> Metadata</a> 
+									<?php endif; ?>
+								</div>
+								<div class="col-md-5 map-countries">
+									
+									<?php 
+
+										$field = get_field_object('paises');
+										$value = $field['value'];
+										$choices = $field['choices'];
+
+										if( $value ): ?>
+										
+											<?php foreach( $value as $v ): ?>
+											
+											<img src="/wp-content/themes/accionclima/includes/icons/<?php echo  $v ; ?>.png" alt="<?php echo $choices[ $v ]; ?>">
+												
+											
+											<?php endforeach; ?>
+										
+										<?php endif; ?>
+
+								</div>
+						</div>				
 					</div>
 				</div>
 			</div>

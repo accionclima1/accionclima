@@ -2,6 +2,8 @@ accionclima.sublime-project
 
 accionclima.sublime-workspace
 
+www/default/
+
 /www/phpcs
 
 /www/wordpress-default
@@ -11,3 +13,5 @@ accionclima.sublime-workspace
 /www/wordpress-trunk
 
 /www/wp-cli
+
+/www/default/opcache-status/

@@ -70,10 +70,13 @@
 			)
 		); ?>
     </div><!-- /.navbar-collapse -->
+	<?php $url = site_url(); ?>
 
-	<form class="navbar-form" role="search">
+	<form role="search" method="get" class="navbar-form" action="<?php echo $url; ?>">
+	
         <div class="form-group">
           <input type="search" class="search-field form-control" class="form-control" placeholder="Buscar">
+          <input type="hidden" name="post_type" value="clima" />
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
