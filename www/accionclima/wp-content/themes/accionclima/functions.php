@@ -86,7 +86,8 @@ function ac_tk_setup() {
 		a {
 			color: #<?php echo trim( $color ); ?>;
 		}
-		.btn-primary {
+		.btn-primary,
+		.carousel-inner>.item.not-first a {
 			background-color: #<?php echo trim( $color ); ?>;
     		border-color: #<?php echo trim( $color ); ?>;
 		}

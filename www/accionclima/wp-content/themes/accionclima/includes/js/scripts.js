@@ -19,7 +19,11 @@ jQuery( document ).ready( function( $ ) {
 	  interval: 4000
 	})
 
-	$('.carousel .item').each(function(){
+	$('#carousel-home').carousel({
+	  interval: 8000
+	})
+
+	$('#carousel-logos.carousel .item').each(function(){
 	  var next = $(this).next();
 	  if (!next.length) {
 	    next = $(this).siblings(':first');

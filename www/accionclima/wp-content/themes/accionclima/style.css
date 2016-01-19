@@ -622,8 +622,19 @@ body>.navbar-fixed-top {
 	position: relative;
 	text-align: center;
 	padding-top: 50px;
+	width: 100%;
+}
+
+#carousel-home,
+.carousel-inner,
+.carousel-inner>.item {
+	height: 100%;
+}
+
+.content-wrap {
 	display: table;
 	width: 100%;
+	height: 100%;
 	vertical-align: middle;
 }
 
@@ -632,6 +643,53 @@ body>.navbar-fixed-top {
 	width: 100%;
 	height: 100%;
 	vertical-align: middle;
+}
+
+.carousel-inner>.item.not-first {
+	color: #fff;
+	font-size: 16px;
+
+}
+
+.carousel-inner>.item.not-first h2 {
+	font-size: 48px;
+	margin: 0 0 24px;
+	text-transform: uppercase;
+}
+
+.carousel-inner>.item.not-first a {
+	display: inline-block;
+    margin: 0 15px 24px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 8px;
+    padding: 8px 28px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+.carousel-indicators {
+    bottom: 28px;
+    letter-spacing: 8px;
+}
+
+.carousel-indicators li {
+	background-color: rgba(255,255,255,0.5);
+	border-color: transparent;
 }
 
 .home-hero img {
@@ -672,6 +730,24 @@ body>.navbar-fixed-top {
 	border-radius: 4px;
 	height: auto;
 }
+
+.page-template-home-php .home-hero form {
+	position: absolute;
+    bottom: 75px;
+    left: 15px;
+    right: 15px;
+}
+
+.page-template-home-php .home-hero input {
+    padding: 20px;
+
+}
+
+.page-template-home-php .home-hero .submit {
+	top: 9px;
+	right: 0;
+}
+
 .home-hero input::-webkit-input-placeholder {
    color: #fff;
    font-weight:300;
@@ -895,6 +971,37 @@ li:hover a .icon-wrap {
 	opacity: 1;
 }
 
+@media (max-width: 413px) {
+	
+	
+	.carousel-indicators {
+		bottom: 0px;
+	}
+	.page-template-home-php .home-hero form {
+		 bottom: 0px;
+	}
+	
+}
+
+@media (max-width: 374px) {
+		.user-menu a {
+			font-size: 8px;
+		}
+		.page-template-home-php .content-layer {
+			vertical-align: top;
+	    	padding-top: 24px;
+		}	
+		.page-template-home-php .home-hero input {
+		    padding: 12px;
+		}
+		.carousel-indicators {
+			bottom: -8px;
+		}
+		.page-template-home-php .home-hero form {
+			bottom: -19px;
+		}
+	}
+
 /* ================================
  secondary homepage styles 
 ================================ */
@@ -942,6 +1049,7 @@ li:hover a .icon-wrap {
 
 .filter a {
 	font-size: 32px;
+	color: #333;
 }
 
 .filter p {
@@ -1220,7 +1328,7 @@ li:hover a .icon-wrap {
 
 .site-footer-inner .slide img {
 	width: auto;
-	height: 50px;
+	height: 38px;
 }
 
 #carousel-logos .carousel-control {
@@ -1297,8 +1405,15 @@ li:hover a .icon-wrap {
 	font-weight: 100;
 	text-transform: uppercase;
 }
-
+div.wpcf7 .form-inline .form-group {
+	margin-left: auto;
+    margin-right: auto;
+}
 @media (min-width: 768px) {
+	.site-footer-inner .slide img {
+	    height: 50px;
+	}
+
 	.copyright {
 		text-align:left;
 		padding: 12px 15px 8px;

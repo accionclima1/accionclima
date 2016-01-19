@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-	<?php if ( have_posts() ) : ?>
+	
 
 		<header class="search-header">
 			<h2 class="page-title"><?php printf( __( 'Resultados de busqueda', 'ac_tk' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
@@ -25,6 +25,7 @@ get_header(); ?>
 		<div class="search-template container">
 			<div class="row">
 				<div class="col-md-6">
+				<?php if ( have_posts() ) : ?>
 				<?php // start the loop. ?>
 					<?php while ( have_posts() ) : the_post(); ?>							
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

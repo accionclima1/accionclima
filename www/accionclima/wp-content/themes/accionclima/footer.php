@@ -20,7 +20,9 @@
 
 				<div class="widget">
 					<h2 class="widget-title">Desea recibir info valiosa?</h2>
-					<p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
+					<p>El propósito primordial de Acción Clima es llevar la información al usuario que la necesite, mejor 
+
+informados podemos tomar mejores decisiones, regístrese para</p>
 					<?php 
 					$formShorcode = '[contact-form-7 id="47" title="registrar correo"]';
 					echo do_shortcode($formShorcode); ?>
@@ -72,8 +74,8 @@
 				</div>
 				<div class="widget">
 					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></span></a>
-					<a href="#"><i class="fa fa-youtube-play"></i></span></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-youtube-play"></i></a>
 				</div>
 
 			<?php endif; ?>
